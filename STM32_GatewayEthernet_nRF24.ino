@@ -66,12 +66,11 @@
 // Enable gateway ethernet module type
 //#define MY_GATEWAY_SERIAL
 #define MY_GATEWAY_W5100
-// Стандартно библиотека настроена на работу с портом SPI1 
-// сигнал SS(NSS) настроен на ногу PA4
-// настройки жёстко зашиты в файле ..//Arduino_STM32/STM32F1/libraries/Ethernet_STM/src/utility/w5500.cpp
-// строка #define STM32_SPI_CS PA0
-// речь разумеется идёт о сбоке скетча с мспользованием фреймворка Arduino_STM32
-// 
+
+/* 
+Т.к. у нас используются два SPI устройства: радиомодуль nRF24 и Ethernet контроллер w5500,
+то мы посадим их на разные SPI порты. nRF24 оставим на SPI1, а w5500 подключим к SPI2
+*/
 
 // Enable UDP communication
 //#define MY_USE_UDP  // If using UDP you need to set MY_CONTROLLER_IP_ADDRESS below
@@ -126,9 +125,6 @@
 //#include <EthernetUdp.h>
 //#endif
 
-//#define __STM32F1__
-
-//#include <Ethernet.h>
 #include <Ethernet_STM.h>
 #include <MySensors.h>
 
